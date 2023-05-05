@@ -12,11 +12,19 @@ import Pojo.HoaDon;
  */
 public class HoaDonDAO {
     
-    public static boolean ThemHD(HoaDon hd)
+    public static boolean ThemHD(String query)
     {
-        String query = String.format("Insert into HoaDon(NgayBan)", hd.getNgayThang());
         DataProvider dataProvider = new DataProvider();
         dataProvider.ketNoi();
+        
+        if(dataProvider.executeUpdate(query) >= 1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
         
         
     }

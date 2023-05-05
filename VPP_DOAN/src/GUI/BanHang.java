@@ -5,9 +5,13 @@
 package GUI;
 
 import DAO.DataProvider;
+import DAO.HoaDonDAO;
 import DAO.SanPhamDAO;
+import Pojo.HoaDon;
 import Pojo.SanPham;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -22,11 +26,14 @@ public class BanHang extends javax.swing.JFrame {
      * Creates new form BanHang
      */
     DefaultTableModel defaultTableModel = new DefaultTableModel();
+    DefaultTableModel defaultTableGioHang = new DefaultTableModel();
     public BanHang() {
         initComponents();
         String TieuDe[] = {"Mã Sản Phẩm", "Tên Sản Phẩm", "Màu", "Số Lượng Tồn", "Đơn Giá"};
         defaultTableModel.setColumnIdentifiers(TieuDe);
+        defaultTableGioHang.setColumnIdentifiers(TieuDe);
         table_DsSanPham.setModel(defaultTableModel);
+        table_GioHang.setModel(defaultTableGioHang);
         hienThiSanPham();
        
     }
@@ -46,7 +53,7 @@ public class BanHang extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        table_GioHang = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
@@ -61,7 +68,7 @@ public class BanHang extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        txtViewTongTien = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -81,7 +88,7 @@ public class BanHang extends javax.swing.JFrame {
         table_DsSanPham = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        btnThemSanPham = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -124,7 +131,7 @@ public class BanHang extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "SẢN PHẨM MUA", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(0, 153, 204))); // NOI18N
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        table_GioHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -135,7 +142,7 @@ public class BanHang extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(table_GioHang);
 
         jButton1.setBackground(new java.awt.Color(0, 153, 204));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -255,8 +262,8 @@ public class BanHang extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setText("Tổng tiền :");
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel9.setText("0");
+        txtViewTongTien.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtViewTongTien.setText("0");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setText("Giảm giá : ");
@@ -319,7 +326,7 @@ public class BanHang extends javax.swing.JFrame {
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel11)
                             .addComponent(jLabel7)
-                            .addComponent(jLabel9)
+                            .addComponent(txtViewTongTien)
                             .addComponent(jLabel13)
                             .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -343,7 +350,7 @@ public class BanHang extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jLabel9)
+                    .addComponent(txtViewTongTien)
                     .addComponent(jLabel17))
                 .addGap(36, 36, 36)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -429,10 +436,15 @@ public class BanHang extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(0, 153, 204));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton3.setText("Thêm sản phẩm");
-        jButton3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnThemSanPham.setBackground(new java.awt.Color(0, 153, 204));
+        btnThemSanPham.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnThemSanPham.setText("Thêm sản phẩm");
+        btnThemSanPham.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnThemSanPham.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemSanPhamActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -448,7 +460,7 @@ public class BanHang extends javax.swing.JFrame {
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(43, 43, 43)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnThemSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -460,7 +472,7 @@ public class BanHang extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnThemSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -528,9 +540,33 @@ public class BanHang extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void btnTaoHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoHoaDonActionPerformed
-          
+        
+        
+        // khoi tao 1 hoa don
+//        Date date = new Date();
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+//        String query  = String.format("Insert into HoaDon(NgayBan) values('%s')", dateFormat.format(date));
+//        
+//        
+//        HoaDonDAO.ThemHD(query);
+//        
+        
+        
+        
           
     }//GEN-LAST:event_btnTaoHoaDonActionPerformed
+
+    private void btnThemSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemSanPhamActionPerformed
+         
+        themSanPhamVaoGio();     
+        txtViewTongTien.setText(String.valueOf( tinhTongTien()));
+
+//        System.out.println(table_GioHang.getRowCount());
+//        txtViewTongTien.setText("sd");
+
+
+         
+    }//GEN-LAST:event_btnThemSanPhamActionPerformed
 
     /**
      * @param args the command line arguments
@@ -569,9 +605,9 @@ public class BanHang extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTaoHoaDon;
+    private javax.swing.JButton btnThemSanPham;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -593,7 +629,6 @@ public class BanHang extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -605,11 +640,12 @@ public class BanHang extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTable table_DsSanPham;
+    private javax.swing.JTable table_GioHang;
+    private javax.swing.JLabel txtViewTongTien;
     // End of variables declaration//GEN-END:variables
 
     private void hienThiSanPham() {
@@ -628,4 +664,35 @@ public class BanHang extends javax.swing.JFrame {
         }
         table_DsSanPham.setModel(defaultTableModel);
     }
+
+    private void themSanPhamVaoGio() {
+        
+        String soLuong =   JOptionPane.showInputDialog(null, "Nhập số lượng sản phẩm:", "Hệ Thống Bán Hàng", JOptionPane.QUESTION_MESSAGE);
+        int row =  table_DsSanPham.getSelectedRow();
+        Vector<Object> rowData = new Vector<Object>();
+        rowData.add(table_DsSanPham.getValueAt(row, 0).toString());
+        rowData.add(table_DsSanPham.getValueAt(row, 1).toString());
+        rowData.add(table_DsSanPham.getValueAt(row, 2).toString());
+        rowData.add(soLuong);
+        rowData.add(table_DsSanPham.getValueAt(row, 4).toString());
+        defaultTableGioHang.addRow(rowData);
+        table_GioHang.setModel(defaultTableGioHang);
+        
+        
+        
+    }
+
+    private Double tinhTongTien() {
+        Double tongTien = 0.0;
+        for(int i = 0; i <  table_GioHang.getRowCount(); i++)
+        {
+            int sl = Integer.parseInt(table_GioHang.getValueAt(i, 3).toString());
+            System.out.println(sl);
+            Double gia = Double.parseDouble(table_GioHang.getValueAt(i, 4).toString());
+            tongTien += (sl * gia);
+        }
+        return tongTien;
+    }
+    
+    
 }
