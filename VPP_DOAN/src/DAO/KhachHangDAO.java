@@ -20,7 +20,7 @@ public class KhachHangDAO {
     {
         ArrayList<KhachHang> dskh = new ArrayList<KhachHang>();
         
-        String query = "select *from khachHang";
+        String query = "select * from khachHang";
         DataProvider dataProvider = new DataProvider();
         dataProvider.ketNoi();
         ResultSet rs;
@@ -43,8 +43,30 @@ public class KhachHangDAO {
         } catch (SQLException ex) {
             Logger.getLogger(KhachHangDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return dskh;
-        
-        
+        return dskh; 
+    }
+    
+    public static KhachHang LayThongTinKhachBangMaKH(int maKh)
+    {
+        KhachHang kh = new KhachHang();
+        String query = "select * from khachHang where maKh = "+maKh+"";
+        DataProvider dataProvider = new DataProvider();
+        dataProvider.ketNoi();
+        ResultSet rs;
+        rs = dataProvider.executeQuery(query);
+        try {
+            while(rs.next())
+            {
+                kh.setMaKh(rs.getInt("MaKH"));
+                kh.setTenKh(rs.getString("TenKH"));
+                kh.setPhai(rs.getString("Phai"));
+                kh.setSdt(rs.getString("SDT"));
+                kh.setDiaChi(rs.getString("DiaChi"));
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(KhachHangDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return kh;
     }
 }

@@ -21,7 +21,7 @@ public class DataProvider {
     public void ketNoi()
     {
         String strName = "DESKTOP-CEQ6SSS";
-        String strDataBase = "QLVPP_";
+        String strDataBase = "QLVPP__";
         String strUser = "sa";
         String strPass ="123";
         try {
@@ -31,12 +31,6 @@ public class DataProvider {
             String cnn = "jdbc:sqlserver://" + strName + ":1433;databaseName=" 
             + strDataBase + ";encrypt=true;trustServerCertificate=true;user=" +strUser + ";password=" + strPass;
             connection = DriverManager.getConnection(cnn);
-
-            if (connection != null) {
-                System.out.println("ket noi thanh cong");
-            } else {
-                System.out.println("ket noi that bai");
-            }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
@@ -65,6 +59,8 @@ public class DataProvider {
         return 0;
         
     }
+    
+
     public void closeConnection()
     {
         try {

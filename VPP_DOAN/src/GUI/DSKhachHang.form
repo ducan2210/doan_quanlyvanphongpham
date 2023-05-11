@@ -58,7 +58,7 @@
                           <EmptySpace pref="26" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jButton1" alignment="1" min="-2" pref="181" max="-2" attributes="0"/>
-                              <Component id="jButton2" alignment="1" min="-2" pref="181" max="-2" attributes="0"/>
+                              <Component id="btnChonKhachHang" alignment="1" min="-2" pref="181" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="jPanel1" max="32767" attributes="0"/>
@@ -79,7 +79,7 @@
                           <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                           <Component id="jButton1" min="-2" pref="51" max="-2" attributes="0"/>
                           <EmptySpace pref="60" max="32767" attributes="0"/>
-                          <Component id="jButton2" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="btnChonKhachHang" min="-2" pref="50" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -173,10 +173,13 @@
             <Property name="text" type="java.lang.String" value="Th&#xea;m Kh&#xe1;ch H&#xe0;ng M&#x1edb;i"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="btnChonKhachHang">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ch&#x1ecd;n Kh&#xe1;ch H&#xe0;ng"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnChonKhachHangActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

@@ -4,17 +4,19 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/-----------NAM---3/---------Ki---2/Java/DOANMONHOC/DOAN_VPP_1/VPP_DOAN/src/DAO/SanPhamDAO.java</file>
-            <file>file:/D:/-----------NAM---3/---------Ki---2/Java/DOANMONHOC/DOAN_VPP_1/VPP_DOAN/src/GUI/DSKhachHang.java</file>
-            <file>file:/D:/-----------NAM---3/---------Ki---2/Java/DOANMONHOC/DOAN_VPP_1/VPP_DOAN/src/GUI/BanHang.java</file>
             <file>file:/D:/-----------NAM---3/---------Ki---2/Java/DOANMONHOC/DOAN_VPP_1/VPP_DOAN/src/DAO/KhachHangDAO.java</file>
-            <file>file:/D:/-----------NAM---3/---------Ki---2/Java/DOANMONHOC/DOAN_VPP_1/VPP_DOAN/src/Pojo/SanPham.java</file>
+            <file>file:/D:/-----------NAM---3/---------Ki---2/Java/DOANMONHOC/DOAN_VPP_1/VPP_DOAN/src/GUI/Main.java</file>
+            <file>file:/D:/-----------NAM---3/---------Ki---2/Java/DOANMONHOC/DOAN_VPP_1/VPP_DOAN/src/GUI/BanHang.java</file>
+            <file>file:/D:/-----------NAM---3/---------Ki---2/Java/DOANMONHOC/DOAN_VPP_1/VPP_DOAN/src/DAO/QLSanPhamDAO.java</file>
             <file>file:/D:/-----------NAM---3/---------Ki---2/Java/DOANMONHOC/DOAN_VPP_1/VPP_DOAN/src/DAO/DataProvider.java</file>
-            <file>file:/D:/-----------NAM---3/---------Ki---2/Java/DOANMONHOC/DOAN_VPP_1/VPP_DOAN/src/Pojo/HoaDon.java</file>
+            <file>file:/D:/-----------NAM---3/---------Ki---2/Java/DOANMONHOC/DOAN_VPP_1/VPP_DOAN/src/Pojo/QLSanPham.java</file>
             <file>file:/D:/-----------NAM---3/---------Ki---2/Java/DOANMONHOC/DOAN_VPP_1/VPP_DOAN/src/Pojo/KhachHang.java</file>
-            <file>file:/D:/-----------NAM---3/---------Ki---2/Java/DOANMONHOC/DOAN_VPP_1/VPP_DOAN/src/GUI/Menu.java</file>
-            <file>file:/D:/-----------NAM---3/---------Ki---2/Java/DOANMONHOC/DOAN_VPP_1/VPP_DOAN/src/GUI/DangNhap.java</file>
-            <file>file:/D:/-----------NAM---3/---------Ki---2/Java/DOANMONHOC/DOAN_VPP_1/VPP_DOAN/src/GUI/Home.java</file>
-            <file>file:/D:/-----------NAM---3/---------Ki---2/Java/DOANMONHOC/DOAN_VPP_1/VPP_DOAN/src/DAO/HoaDonDAO.java</file>
+            <file>file:/D:/-----------NAM---3/---------Ki---2/Java/DOANMONHOC/DOAN_VPP_1/VPP_DOAN/src/Pojo/HoaDon.java</file>
+            <file>file:/D:/-----------NAM---3/---------Ki---2/Java/DOANMONHOC/DOAN_VPP_1/VPP_DOAN/src/GUI/SanPham.java</file>
+            <file>file:/D:/-----------NAM---3/---------Ki---2/Java/DOANMONHOC/DOAN_VPP_1/VPP_DOAN/src/DAO/NhaCungCapDAO.java</file>
+            <file>file:/D:/-----------NAM---3/---------Ki---2/Java/DOANMONHOC/DOAN_VPP_1/VPP_DOAN/src/Pojo/SanPham.java</file>
+            <file>file:/D:/-----------NAM---3/---------Ki---2/Java/DOANMONHOC/DOAN_VPP_1/VPP_DOAN/src/Pojo/NhaCungCap.java</file>
+            <file>file:/D:/-----------NAM---3/---------Ki---2/Java/DOANMONHOC/DOAN_VPP_1/VPP_DOAN/src/Pojo/CtHoaDon.java</file>
         </group>
     </open-files>
 </project-private>

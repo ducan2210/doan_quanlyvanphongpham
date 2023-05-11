@@ -12,8 +12,17 @@ public class SanPham {
     String tenSp, mau;
     int soLuong, maSP, maLoai,maNCC ;
     int donGia;
+    private String TenLoai;
 
-    public SanPham(String tenSp, String mau, int soLuong, int maSP, int maLoai, int maNCC, int donGia) {
+    public String getTenLoai() {
+        return TenLoai;
+    }
+
+    public void setTenLoai(String TenLoai) {
+        this.TenLoai = TenLoai;
+    }
+
+    public SanPham(String tenSp, String mau, int soLuong, int maSP, int maLoai, int maNCC, int donGia, String tenLoai) {
         this.tenSp = tenSp;
         this.mau = mau;
         this.soLuong = soLuong;
@@ -21,6 +30,7 @@ public class SanPham {
         this.maLoai = maLoai;
         this.maNCC = maNCC;
         this.donGia = donGia;
+        this.TenLoai = tenLoai;
     }
 
     public SanPham() {

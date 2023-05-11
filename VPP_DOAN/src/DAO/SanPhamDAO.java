@@ -16,6 +16,9 @@ import java.util.logging.Logger;
  * @author Nguyen Bach Long
  */
 public class SanPhamDAO {
+    
+    
+    
     public static ArrayList <SanPham> dsSP()
     {
         ArrayList <SanPham> dsSP = new ArrayList<SanPham>();
@@ -47,5 +50,35 @@ public class SanPhamDAO {
         return dsSP;
         
     }
+    
+    public static ArrayList<SanPham> timKiemSanPham(String text)
+    {
+         String querry = "SELECT * FROM SanPham WHERE tenSP LIKE N'%"+text+"%'";
+         DataProvider dataProvider = new DataProvider();
+         dataProvider.ketNoi();
+         
+         ResultSet rs = dataProvider.executeQuery(querry);
+         ArrayList <SanPham> dsSP = new ArrayList<SanPham>();
+
+        try {
+            while(rs.next())
+            {
+                SanPham sp = new SanPham();
+                sp.setMaSP(rs.getInt("MaSP"));
+                sp.setMaLoai(rs.getInt("MaLoai"));
+                sp.setTenSp(rs.getString("TenSP"));
+                sp.setMau(rs.getString("Mau"));
+                sp.setSoLuong(rs.getInt("SoLuong"));
+                sp.setDonGia(rs.getInt("DonGia"));
+                sp.setMaNCC(rs.getInt("MaNCC"));
+                dsSP.add(sp);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SanPhamDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            dataProvider.closeConnection();
+        return dsSP;
+    }
+            
     
 }

@@ -19,7 +19,8 @@ public class DSKhachHang extends javax.swing.JFrame {
     /**
      * Creates new form DSKhachHang
      */
-    
+
+    public static int data;
     DefaultTableModel defaultTableModel = new DefaultTableModel();
     public DSKhachHang() {
         initComponents();
@@ -27,11 +28,16 @@ public class DSKhachHang extends javax.swing.JFrame {
         defaultTableModel.setColumnIdentifiers(TieuDe);
         table_KhachHang.setModel(defaultTableModel);
         hienThiKhachHang();
+      
+        
         
         //hienThiKhachHang();
-        
+       
     }
 
+    
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,7 +54,7 @@ public class DSKhachHang extends javax.swing.JFrame {
         table_KhachHang = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnChonKhachHang = new javax.swing.JButton();
 
         jTextField1.setText("jTextField1");
 
@@ -101,7 +107,12 @@ public class DSKhachHang extends javax.swing.JFrame {
 
         jButton1.setText("Thêm Khách Hàng Mới");
 
-        jButton2.setText("Chọn Khách Hàng");
+        btnChonKhachHang.setText("Chọn Khách Hàng");
+        btnChonKhachHang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChonKhachHangActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -115,7 +126,7 @@ public class DSKhachHang extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnChonKhachHang, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -130,7 +141,7 @@ public class DSKhachHang extends javax.swing.JFrame {
                         .addGap(38, 38, 38)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnChonKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -149,6 +160,14 @@ public class DSKhachHang extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnChonKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonKhachHangActionPerformed
+        int row = table_KhachHang.getSelectedRow();
+        
+        data = Integer.parseInt(table_KhachHang.getValueAt(row, 0).toString());
+        //BanHang bd = new BanHang();
+        this.dispose();
+    }//GEN-LAST:event_btnChonKhachHangActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,8 +205,8 @@ public class DSKhachHang extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnChonKhachHang;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -217,4 +236,5 @@ public class DSKhachHang extends javax.swing.JFrame {
         table_KhachHang.setModel(defaultTableModel);
         
     }
+    
 }
