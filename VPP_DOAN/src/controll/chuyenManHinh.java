@@ -5,6 +5,7 @@
 package controll;
 
 import GUI.BanHang;
+import GUI.KhachHang;
 import GUI.ThongKe;
 import GUI.NhanVien;
 import GUI.SanPham;
@@ -83,6 +84,9 @@ public class chuyenManHinh {
                     break;
                 case "NhanVien":
                     node = new NhanVien();
+                    break;
+                case "KhachHang":
+                    node = new GUI.KhachHang();
                     break;
                  default:
                     node = new BanHang();

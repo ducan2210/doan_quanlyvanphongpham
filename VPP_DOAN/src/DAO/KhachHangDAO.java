@@ -18,6 +18,29 @@ import java.util.logging.Logger;
 public class KhachHangDAO {
     
     
+    
+    public static KhachHang timKiemKhachHang(String txt)
+    {
+        DataProvider dataProvider = new DataProvider();
+        dataProvider.ketNoi();
+        String querry = "SELECT * FROM KhachHang WHERE SDT LIKE '"+txt+"%'";
+        ResultSet rs =  dataProvider.executeQuery(querry);
+        KhachHang kh = new KhachHang();
+        try {
+            while(rs.next())
+            {
+                kh.setMaKh(rs.getInt("Makh"));
+                kh.setTenKh(rs.getString("TenKh"));
+                kh.setPhai(rs.getString("Phai"));
+                kh.setSdt(rs.getString("DiaChi"));
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(KhachHangDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return kh;
+    }
+    
     public static boolean thẹmKhachHang(KhachHang kh)
     {
         DataProvider dataProvider = new DataProvider();
@@ -32,7 +55,7 @@ public class KhachHangDAO {
     }
     
     
-    public ArrayList <KhachHang> dsKh()
+    public static ArrayList <KhachHang> dsKh()
     {
         ArrayList<KhachHang> dskh = new ArrayList<KhachHang>();
         

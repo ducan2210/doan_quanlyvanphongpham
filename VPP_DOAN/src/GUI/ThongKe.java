@@ -5,6 +5,8 @@
 package GUI;
 
 import DAO.HoaDonDAO;
+import DAO.ctHoaDonDAO;
+import Pojo.CtHoaDon;
 import Pojo.HoaDon;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -30,6 +32,7 @@ public class ThongKe extends javax.swing.JPanel {
     SimpleDateFormat month = new SimpleDateFormat("MM");
     
     DefaultTableModel defaultTableHD = new DefaultTableModel();
+    DefaultTableModel defaultTableCTHD = new DefaultTableModel();
     
     public ThongKe() {
         initComponents();
@@ -39,9 +42,9 @@ public class ThongKe extends javax.swing.JPanel {
 
         
         defaultTableHD.setColumnIdentifiers(TieuDe);
-        
+        defaultTableCTHD.setColumnIdentifiers(TieuDeCT);
         table_HD.setModel(defaultTableHD);
-     
+        table_Cthd.setModel(defaultTableCTHD);
         
         hienThiTongDonHang();
         
@@ -105,14 +108,14 @@ public class ThongKe extends javax.swing.JPanel {
         dateKT = new com.toedter.calendar.JDateChooser();
         btnChon = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tabCT = new javax.swing.JTabbedPane();
         jPanel13 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_HD = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        btnXemChiTiet = new javax.swing.JButton();
         jPanel14 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table_Cthd = new javax.swing.JTable();
         jPanel11 = new javax.swing.JPanel();
         dateBD = new com.toedter.calendar.JDateChooser();
 
@@ -537,7 +540,7 @@ public class ThongKe extends javax.swing.JPanel {
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder("Danh Sách Chi Tiết"));
 
-        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
+        tabCT.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel13.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -554,10 +557,10 @@ public class ThongKe extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(table_HD);
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnXemChiTiet.setText("Xem Chi tiết");
+        btnXemChiTiet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnXemChiTietActionPerformed(evt);
             }
         });
 
@@ -569,7 +572,7 @@ public class ThongKe extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnXemChiTiet, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31))
         );
         jPanel13Layout.setVerticalGroup(
@@ -580,15 +583,15 @@ public class ThongKe extends javax.swing.JPanel {
                 .addContainerGap())
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnXemChiTiet, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Danh Sách Hóa Đơn", jPanel13);
+        tabCT.addTab("Danh Sách Hóa Đơn", jPanel13);
 
         jPanel14.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table_Cthd.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -599,7 +602,7 @@ public class ThongKe extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(table_Cthd);
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
@@ -618,19 +621,19 @@ public class ThongKe extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Chi tiết hóa đơn", jPanel14);
+        tabCT.addTab("Chi tiết hóa đơn", jPanel14);
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(tabCT)
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1))
+                .addComponent(tabCT))
         );
 
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
@@ -664,7 +667,7 @@ public class ThongKe extends javax.swing.JPanel {
                     .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(50, 50, 50)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(718, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -704,7 +707,7 @@ public class ThongKe extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1341, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 658, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -717,16 +720,33 @@ public class ThongKe extends javax.swing.JPanel {
         hienThiDSHDTNG();
     }//GEN-LAST:event_btnChonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnXemChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemChiTietActionPerformed
+       int row = table_HD.getSelectedRow();
+       
+        ArrayList<CtHoaDon> cthd = ctHoaDonDAO.dsCTHDTheoMa(Integer.parseInt(table_HD.getValueAt(row, 0).toString()));
+        defaultTableCTHD.setRowCount(0);
+
+         for( CtHoaDon ct : cthd)
+        {
+            Vector<Object> rowData = new Vector<Object>();
+            rowData.add(String.valueOf(ct.getMaHD()));
+            rowData.add(String.valueOf(ct.getMaCTHD()));
+            rowData.add(ct.getTenSP());
+            rowData.add(ct.getSoLuong());
+            rowData.add(ct.getThanhTien());
+            rowData.add(ct.getNgayBan());
+            defaultTableCTHD.addRow(rowData);
+        }
+        table_Cthd.setModel(defaultTableCTHD);
+       tabCT.setSelectedIndex(1);
+    }//GEN-LAST:event_btnXemChiTietActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChon;
+    private javax.swing.JButton btnXemChiTiet;
     private com.toedter.calendar.JDateChooser dateBD;
     private com.toedter.calendar.JDateChooser dateKT;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -773,8 +793,8 @@ public class ThongKe extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTabbedPane tabCT;
+    private javax.swing.JTable table_Cthd;
     private javax.swing.JTable table_HD;
     private javax.swing.JLabel txtViewDoanhThuThang;
     private javax.swing.JLabel txtViewTongDonHang;

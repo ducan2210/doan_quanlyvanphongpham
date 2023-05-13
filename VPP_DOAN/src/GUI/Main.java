@@ -27,6 +27,7 @@ public class Main extends javax.swing.JFrame {
         listItem.add(new DanhMuc("ThongKe", tab_HoaDon, jLbHoaDon));
         listItem.add(new DanhMuc("SanPham", tab_SanPham, jblSanham));
         listItem.add(new DanhMuc("NhanVien", tab_NhanVien, jblNhanVien));
+        listItem.add(new DanhMuc("KhachHang", tab_KhachHang, jblKhachHang));
         contro.setEvent(listItem);
         
     }
@@ -51,8 +52,8 @@ public class Main extends javax.swing.JFrame {
         jblSanham = new javax.swing.JLabel();
         tab_NhanVien = new javax.swing.JPanel();
         jblNhanVien = new javax.swing.JLabel();
-        tab_NhanVien1 = new javax.swing.JPanel();
-        jblNhanVien1 = new javax.swing.JLabel();
+        tab_KhachHang = new javax.swing.JPanel();
+        jblKhachHang = new javax.swing.JLabel();
         tab_NhanVien2 = new javax.swing.JPanel();
         jblNhanVien2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -142,7 +143,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(tab_SanPhamLayout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addComponent(jblSanham, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
         tab_SanPhamLayout.setVerticalGroup(
             tab_SanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,37 +169,37 @@ public class Main extends javax.swing.JFrame {
             .addGroup(tab_NhanVienLayout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addComponent(jblNhanVien)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(134, Short.MAX_VALUE))
         );
         tab_NhanVienLayout.setVerticalGroup(
             tab_NhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jblNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
         );
 
-        tab_NhanVien1.setBackground(new java.awt.Color(255, 153, 204));
-        tab_NhanVien1.addMouseListener(new java.awt.event.MouseAdapter() {
+        tab_KhachHang.setBackground(new java.awt.Color(255, 153, 204));
+        tab_KhachHang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tab_NhanVien1MouseClicked(evt);
+                tab_KhachHangMouseClicked(evt);
             }
         });
 
-        jblNhanVien1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jblNhanVien1.setForeground(new java.awt.Color(255, 255, 255));
-        jblNhanVien1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-bill-30.png"))); // NOI18N
-        jblNhanVien1.setText("LỊCH SỬ");
+        jblKhachHang.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jblKhachHang.setForeground(new java.awt.Color(255, 255, 255));
+        jblKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-bill-30.png"))); // NOI18N
+        jblKhachHang.setText("KHÁCH HÀNG");
 
-        javax.swing.GroupLayout tab_NhanVien1Layout = new javax.swing.GroupLayout(tab_NhanVien1);
-        tab_NhanVien1.setLayout(tab_NhanVien1Layout);
-        tab_NhanVien1Layout.setHorizontalGroup(
-            tab_NhanVien1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tab_NhanVien1Layout.createSequentialGroup()
+        javax.swing.GroupLayout tab_KhachHangLayout = new javax.swing.GroupLayout(tab_KhachHang);
+        tab_KhachHang.setLayout(tab_KhachHangLayout);
+        tab_KhachHangLayout.setHorizontalGroup(
+            tab_KhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tab_KhachHangLayout.createSequentialGroup()
                 .addGap(57, 57, 57)
-                .addComponent(jblNhanVien1)
+                .addComponent(jblKhachHang)
                 .addContainerGap(113, Short.MAX_VALUE))
         );
-        tab_NhanVien1Layout.setVerticalGroup(
-            tab_NhanVien1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jblNhanVien1, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+        tab_KhachHangLayout.setVerticalGroup(
+            tab_KhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jblKhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
         );
 
         tab_NhanVien2.setBackground(new java.awt.Color(255, 153, 204));
@@ -238,10 +239,10 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel15)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(106, Short.MAX_VALUE))
             .addComponent(tab_SanPham, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(tab_NhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(tab_NhanVien1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(tab_KhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(tab_NhanVien2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jpnMenuLayout.setVerticalGroup(
@@ -260,7 +261,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(tab_NhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(tab_NhanVien1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tab_KhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(tab_NhanVien2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(158, Short.MAX_VALUE))
@@ -270,7 +271,7 @@ public class Main extends javax.swing.JFrame {
         jpnView.setLayout(jpnViewLayout);
         jpnViewLayout.setHorizontalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 879, Short.MAX_VALUE)
+            .addGap(0, 825, Short.MAX_VALUE)
         );
         jpnViewLayout.setVerticalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -322,9 +323,9 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tab_NhanVienMouseClicked
 
-    private void tab_NhanVien1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab_NhanVien1MouseClicked
+    private void tab_KhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab_KhachHangMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tab_NhanVien1MouseClicked
+    }//GEN-LAST:event_tab_KhachHangMouseClicked
 
     private void tab_NhanVien2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab_NhanVien2MouseClicked
         // TODO add your handling code here:
@@ -371,16 +372,16 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLbBangHang;
     private javax.swing.JLabel jLbHoaDon;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jblKhachHang;
     private javax.swing.JLabel jblNhanVien;
-    private javax.swing.JLabel jblNhanVien1;
     private javax.swing.JLabel jblNhanVien2;
     private javax.swing.JLabel jblSanham;
     private javax.swing.JPanel jpnMenu;
     private javax.swing.JPanel jpnView;
     private javax.swing.JPanel tab_BanHang;
     private javax.swing.JPanel tab_HoaDon;
+    private javax.swing.JPanel tab_KhachHang;
     private javax.swing.JPanel tab_NhanVien;
-    private javax.swing.JPanel tab_NhanVien1;
     private javax.swing.JPanel tab_NhanVien2;
     private javax.swing.JPanel tab_SanPham;
     // End of variables declaration//GEN-END:variables

@@ -25,15 +25,18 @@ public class ctHoaDonDAO {
         DataProvider dataProvider = new DataProvider();
         dataProvider.ketNoi();
         
-       ResultSet rs =  dataProvider.executeQuery("select * from CtHoaDon where MAHD = "+ma+"");
+       ResultSet rs =  dataProvider.executeQuery("select MaHD, MACTHD, TenSP, CTHOADON.SoLuong, "
+               + "ThanhTien, NgayBan  from CTHOADON, SANPHAM where CTHOADON.MaSP = SANPHAM.MaSP AND CTHOADON.MaHD = "+ma+"");
         try {
             while(rs.next())
             {
                 CtHoaDon ct = new CtHoaDon();
                 ct.setMaHD(rs.getInt("MAHD"));
-                ct.setMaSP(rs.getInt("MaSp"));
-                ct.setSoLuong(rs.getInt("soLuong"));
+                ct.setMaCTHD(rs.getInt("MACTHD"));
+                ct.setTenSP(rs.getString("TenSP"));
+                ct.setSoLuong(rs.getInt("SoLuong"));
                 ct.setThanhTien(rs.getInt("ThanhTien"));
+                ct.setNgayBan(rs.getString("NgayBan"));
                 dsCTHD.add(ct);
                 
             }} catch (SQLException ex) {
