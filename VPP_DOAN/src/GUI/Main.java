@@ -24,9 +24,9 @@ public class Main extends javax.swing.JFrame {
         contro.setView(tab_BanHang, jLbBangHang);
         List<DanhMuc> listItem = new ArrayList<>();
         listItem.add(new DanhMuc("BanHang", tab_BanHang, jLbBangHang));
-        listItem.add(new DanhMuc("HoaDon", tab_HoaDon, jLbHoaDon));
+        listItem.add(new DanhMuc("ThongKe", tab_HoaDon, jLbHoaDon));
         listItem.add(new DanhMuc("SanPham", tab_SanPham, jblSanham));
-
+        listItem.add(new DanhMuc("NhanVien", tab_NhanVien, jblNhanVien));
         contro.setEvent(listItem);
         
     }
@@ -49,6 +49,12 @@ public class Main extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         tab_SanPham = new javax.swing.JPanel();
         jblSanham = new javax.swing.JLabel();
+        tab_NhanVien = new javax.swing.JPanel();
+        jblNhanVien = new javax.swing.JLabel();
+        tab_NhanVien1 = new javax.swing.JPanel();
+        jblNhanVien1 = new javax.swing.JLabel();
+        tab_NhanVien2 = new javax.swing.JPanel();
+        jblNhanVien2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jpnView = new javax.swing.JPanel();
 
@@ -92,7 +98,7 @@ public class Main extends javax.swing.JFrame {
         jLbHoaDon.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLbHoaDon.setForeground(new java.awt.Color(255, 255, 255));
         jLbHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-bill-30.png"))); // NOI18N
-        jLbHoaDon.setText("HÓA ĐƠN");
+        jLbHoaDon.setText("THỐNG KÊ");
 
         javax.swing.GroupLayout tab_HoaDonLayout = new javax.swing.GroupLayout(tab_HoaDon);
         tab_HoaDon.setLayout(tab_HoaDonLayout);
@@ -136,11 +142,89 @@ public class Main extends javax.swing.JFrame {
             .addGroup(tab_SanPhamLayout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addComponent(jblSanham, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         tab_SanPhamLayout.setVerticalGroup(
             tab_SanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jblSanham, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+            .addComponent(jblSanham, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+        );
+
+        tab_NhanVien.setBackground(new java.awt.Color(255, 153, 204));
+        tab_NhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tab_NhanVienMouseClicked(evt);
+            }
+        });
+
+        jblNhanVien.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jblNhanVien.setForeground(new java.awt.Color(255, 255, 255));
+        jblNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-bill-30.png"))); // NOI18N
+        jblNhanVien.setText("NHÂN VIÊN");
+
+        javax.swing.GroupLayout tab_NhanVienLayout = new javax.swing.GroupLayout(tab_NhanVien);
+        tab_NhanVien.setLayout(tab_NhanVienLayout);
+        tab_NhanVienLayout.setHorizontalGroup(
+            tab_NhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tab_NhanVienLayout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addComponent(jblNhanVien)
+                .addContainerGap(80, Short.MAX_VALUE))
+        );
+        tab_NhanVienLayout.setVerticalGroup(
+            tab_NhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jblNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+        );
+
+        tab_NhanVien1.setBackground(new java.awt.Color(255, 153, 204));
+        tab_NhanVien1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tab_NhanVien1MouseClicked(evt);
+            }
+        });
+
+        jblNhanVien1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jblNhanVien1.setForeground(new java.awt.Color(255, 255, 255));
+        jblNhanVien1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-bill-30.png"))); // NOI18N
+        jblNhanVien1.setText("LỊCH SỬ");
+
+        javax.swing.GroupLayout tab_NhanVien1Layout = new javax.swing.GroupLayout(tab_NhanVien1);
+        tab_NhanVien1.setLayout(tab_NhanVien1Layout);
+        tab_NhanVien1Layout.setHorizontalGroup(
+            tab_NhanVien1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tab_NhanVien1Layout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addComponent(jblNhanVien1)
+                .addContainerGap(113, Short.MAX_VALUE))
+        );
+        tab_NhanVien1Layout.setVerticalGroup(
+            tab_NhanVien1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jblNhanVien1, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+        );
+
+        tab_NhanVien2.setBackground(new java.awt.Color(255, 153, 204));
+        tab_NhanVien2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tab_NhanVien2MouseClicked(evt);
+            }
+        });
+
+        jblNhanVien2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jblNhanVien2.setForeground(new java.awt.Color(255, 255, 255));
+        jblNhanVien2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-bill-30.png"))); // NOI18N
+        jblNhanVien2.setText("LỊCH SỬ");
+
+        javax.swing.GroupLayout tab_NhanVien2Layout = new javax.swing.GroupLayout(tab_NhanVien2);
+        tab_NhanVien2.setLayout(tab_NhanVien2Layout);
+        tab_NhanVien2Layout.setHorizontalGroup(
+            tab_NhanVien2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tab_NhanVien2Layout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addComponent(jblNhanVien2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        tab_NhanVien2Layout.setVerticalGroup(
+            tab_NhanVien2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jblNhanVien2, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jpnMenuLayout = new javax.swing.GroupLayout(jpnMenu);
@@ -156,6 +240,9 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jLabel15)
                 .addContainerGap(52, Short.MAX_VALUE))
             .addComponent(tab_SanPham, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(tab_NhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(tab_NhanVien1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(tab_NhanVien2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jpnMenuLayout.setVerticalGroup(
             jpnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,7 +257,13 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(tab_HoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(tab_SanPham, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(383, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(tab_NhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(tab_NhanVien1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(tab_NhanVien2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(158, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jpnViewLayout = new javax.swing.GroupLayout(jpnView);
@@ -225,6 +318,18 @@ public class Main extends javax.swing.JFrame {
 
     }//GEN-LAST:event_tab_BanHangMouseClicked
 
+    private void tab_NhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab_NhanVienMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tab_NhanVienMouseClicked
+
+    private void tab_NhanVien1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab_NhanVien1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tab_NhanVien1MouseClicked
+
+    private void tab_NhanVien2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab_NhanVien2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tab_NhanVien2MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -266,11 +371,17 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLbBangHang;
     private javax.swing.JLabel jLbHoaDon;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jblNhanVien;
+    private javax.swing.JLabel jblNhanVien1;
+    private javax.swing.JLabel jblNhanVien2;
     private javax.swing.JLabel jblSanham;
     private javax.swing.JPanel jpnMenu;
     private javax.swing.JPanel jpnView;
     private javax.swing.JPanel tab_BanHang;
     private javax.swing.JPanel tab_HoaDon;
+    private javax.swing.JPanel tab_NhanVien;
+    private javax.swing.JPanel tab_NhanVien1;
+    private javax.swing.JPanel tab_NhanVien2;
     private javax.swing.JPanel tab_SanPham;
     // End of variables declaration//GEN-END:variables
 }

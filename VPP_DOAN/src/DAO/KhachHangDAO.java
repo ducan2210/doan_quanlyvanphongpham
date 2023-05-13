@@ -16,6 +16,22 @@ import java.util.logging.Logger;
  * @author Nguyen Bach Long
  */
 public class KhachHangDAO {
+    
+    
+    public static boolean thẹmKhachHang(KhachHang kh)
+    {
+        DataProvider dataProvider = new DataProvider();
+        dataProvider.ketNoi();
+        String query =  "Insert Into KHACHHANG(TenKH, Phai, SDT, DiaChi) values(N'"+kh.getTenKh()+"', N'"+kh.getPhai()+"','"+kh.getSdt()+"',N'"+kh.getDiaChi()+"')";
+        int i =  dataProvider.executeUpdate(query);
+        if(i >= 0 )
+        {
+            return true;
+        }
+        return false;
+    }
+    
+    
     public ArrayList <KhachHang> dsKh()
     {
         ArrayList<KhachHang> dskh = new ArrayList<KhachHang>();

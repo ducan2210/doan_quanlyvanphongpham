@@ -16,15 +16,42 @@ public class HoaDon {
     int thanhTien;
     String ngayThang;
     String trangThai;
+    String tenNhanVien;
+    String tenKhachHang;
 
-    public HoaDon(int maHD, int maKH, int maNV, int thanhTien, String ngayThang, String trangThai) {
+    
+    
+    public HoaDon(int maHD, int maKH, int maNV, int thanhTien, String ngayThang, String trangThai, String tenNhanVien, String tenKhachHang) {
         this.maHD = maHD;
         this.maKH = maKH;
         this.maNV = maNV;
         this.thanhTien = thanhTien;
         this.ngayThang = ngayThang;
         this.trangThai = trangThai;
+        this.tenNhanVien = tenNhanVien;
+        this.tenKhachHang = tenKhachHang;
     }
+
+    
+    
+    
+    public String getTenNhanVien() {
+        return tenNhanVien;
+    }
+
+    public void setTenNhanVien(String tenNhanVien) {
+        this.tenNhanVien = tenNhanVien;
+    }
+
+    public String getTenKhachHang() {
+        return tenKhachHang;
+    }
+
+    public void setTenKhachHang(String tenKhachHang) {
+        this.tenKhachHang = tenKhachHang;
+    }
+
+    
 
     public HoaDon() {
     }

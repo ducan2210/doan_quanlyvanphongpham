@@ -5,7 +5,8 @@
 package controll;
 
 import GUI.BanHang;
-import GUI.HoaDon;
+import GUI.ThongKe;
+import GUI.NhanVien;
 import GUI.SanPham;
 import bean.DanhMuc;
 import java.awt.BorderLayout;
@@ -74,11 +75,14 @@ public class chuyenManHinh {
                 case "BanHang":
                     node = new BanHang();
                     break;
-                case "HoaDon":
-                    node = new HoaDon();
+                case "ThongKe":
+                    node = new ThongKe();
                     break;
                 case "SanPham":
                     node = new SanPham();
+                    break;
+                case "NhanVien":
+                    node = new NhanVien();
                     break;
                  default:
                     node = new BanHang();

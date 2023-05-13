@@ -18,6 +18,32 @@ import java.util.logging.Logger;
  */
 public class ctHoaDonDAO {
     
+    
+    public static ArrayList<CtHoaDon> dsCTHDTheoMa(int ma)
+    {
+        ArrayList<CtHoaDon> dsCTHD = new ArrayList<CtHoaDon>();
+        DataProvider dataProvider = new DataProvider();
+        dataProvider.ketNoi();
+        
+       ResultSet rs =  dataProvider.executeQuery("select * from CtHoaDon where MAHD = "+ma+"");
+        try {
+            while(rs.next())
+            {
+                CtHoaDon ct = new CtHoaDon();
+                ct.setMaHD(rs.getInt("MAHD"));
+                ct.setMaSP(rs.getInt("MaSp"));
+                ct.setSoLuong(rs.getInt("soLuong"));
+                ct.setThanhTien(rs.getInt("ThanhTien"));
+                dsCTHD.add(ct);
+                
+            }} catch (SQLException ex) {
+            Logger.getLogger(ctHoaDonDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return dsCTHD;
+        
+    }
+    
+    
     public static ArrayList<CtHoaDon> dsCTHD()
     {
         ArrayList<CtHoaDon> dsCTHD = new ArrayList<CtHoaDon>();

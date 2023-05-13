@@ -110,6 +110,11 @@ public class SanPham extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Thông tin sản phẩm"));
 
         jLabel1.setText("Mã sản phẩm");
@@ -249,6 +254,7 @@ public class SanPham extends javax.swing.JPanel {
                 .addContainerGap(11, Short.MAX_VALUE))
         );
 
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Lọc sản phẩm"));
 
         jLabel7.setText("Loại sản phẩm:");
@@ -413,6 +419,8 @@ public class SanPham extends javax.swing.JPanel {
         );
 
         jTabbedPane1.addTab("Thông tin sản Phẩm", jPanel2);
+
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 0, 0));

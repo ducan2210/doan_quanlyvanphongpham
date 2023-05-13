@@ -12,15 +12,27 @@ public class CtHoaDon {
     int maCTHD, maHD, maSP, soLuong;
     double thanhTien;
     String ngayBan;
+    String tenSP;
 
-    public CtHoaDon(int maCTHD, int maHD, int maSP, int soLuong, double thanhTien, String ngayBan) {
+    public CtHoaDon(int maCTHD, int maHD, int maSP, int soLuong, double thanhTien, String ngayBan, String tenSP) {
         this.maCTHD = maCTHD;
         this.maHD = maHD;
         this.maSP = maSP;
         this.soLuong = soLuong;
         this.thanhTien = thanhTien;
         this.ngayBan = ngayBan;
+        this.tenSP = tenSP;
     }
+
+    public String getTenSP() {
+        return tenSP;
+    }
+
+    public void setTenSP(String tenSP) {
+        this.tenSP = tenSP;
+    }
+
+    
 
     public CtHoaDon() {
     }

@@ -8,12 +8,12 @@ package GUI;
  *
  * @author Nguyen Bach Long
  */
-public class HoaDon extends javax.swing.JPanel {
+public class KhachHang extends javax.swing.JPanel {
 
     /**
-     * Creates new form banghang3
+     * Creates new form KhachHang
      */
-    public HoaDon() {
+    public KhachHang() {
         initComponents();
     }
 
@@ -30,11 +30,11 @@ public class HoaDon extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 1241, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
