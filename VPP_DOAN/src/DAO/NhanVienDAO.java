@@ -8,6 +8,8 @@ import Pojo.NhanVien;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -102,22 +104,41 @@ public class NhanVienDAO {
     return kq;
   }
   
-  public static boolean kiemTraNhanVien(String taikhoan)
+  public static Pojo.NhanVien kiemTraNhanVien(String taikhoan)
   {
-    try {
+      NhanVien nv = new NhanVien();
+     
       String sql = String.format("select * from NhanVien where TaiKhoan = '%s'", new Object[] { taikhoan });
       DataProvider provider = new DataProvider();
       provider.ketNoi();
       ResultSet resultSet = provider.executeQuery(sql);
-      if (resultSet.next())
+      if(resultSet== null)
       {
-        return true;
+         nv = null; 
       }
+        try {
+            if (resultSet.next())
+            {
+                
+                nv.setMaNV(resultSet.getInt("MaNV"));
+                nv.setHoTen(resultSet.getString("Hoten"));
+                nv.setTaiKhoan(resultSet.getString("TaiKhoan"));
+                nv.setMatKhau(resultSet.getString("MatKhau"));
+                nv.setSoDT(resultSet.getString("SDT"));
+                nv.setDiaChi(resultSet.getString("DiaChi"));
+                nv.setHinh(resultSet.getString("Hinh"));
+                nv.setTrangThai(resultSet.getString("TrangTrai"));
+                nv.setQuyen(resultSet.getString("Quyen"));
+                nv.setMatKhau(resultSet.getString("MatKhau"));
+                
+            } } catch (SQLException ex) {
+            Logger.getLogger(NhanVienDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
       provider.closeConnection();
-    } catch (SQLException e) {
-      e.getMessage();
-    }
-    return false;
+      return nv;
+     
+   
+     
   }
 
 
@@ -202,6 +223,7 @@ public class NhanVienDAO {
           nv.setHinh(resultSet.getString("Hinh"));
           nv.setTrangThai(resultSet.getString("TrangTrai"));
           nv.setQuyen(resultSet.getString("Quyen"));
+          nv.setMatKhau(resultSet.getString("MatKhau"));
           dsnv.add(nv);
         }
         provider.closeConnection();
@@ -236,6 +258,7 @@ public class NhanVienDAO {
         };
   }
   
+  
   public static ArrayList<NhanVien> layDanhSachNhanVien(String taikhoan)
     {
       ArrayList<NhanVien> dsnv = new ArrayList();
@@ -264,4 +287,19 @@ public class NhanVienDAO {
       }
       return dsnv;
     }
+    public static boolean capNhatThongNhanVien(Pojo.NhanVien a)
+    {
+        boolean kq = false;
+        String sql = String.format("update NhanVien set Hoten=N'%s', TaiKhoan='%s', SDT='%s', DiaChi=N'%s', Hinh='%s', TrangTrai=N'%s', Quyen=N'%s' where MaNV=%d", new Object[] { a.hoTen, a.taiKhoan, a.soDT, a.diaChi, a.hinh, a.trangThai, a.quyen, a.maNV });
+        DataProvider provider = new DataProvider();
+        provider.ketNoi();
+        int n = provider.executeUpdate(sql);
+        if (n > 0) {
+          kq = true;
+        }
+        provider.closeConnection();
+        return kq;
+    }
+    
+    
 }

@@ -139,6 +139,11 @@ public class SanPham extends javax.swing.JPanel {
 
         btn_luu.setBackground(new java.awt.Color(255, 204, 51));
         btn_luu.setText("Lưu");
+        btn_luu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_luuActionPerformed(evt);
+            }
+        });
 
         btn_chiTietSP.setBackground(new java.awt.Color(255, 204, 51));
         btn_chiTietSP.setText("Chi tiết sản phẩm");
@@ -769,8 +774,13 @@ public class SanPham extends javax.swing.JPanel {
     }//GEN-LAST:event_cbx_tt1ItemStateChanged
 
     private void btn_themSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_themSPActionPerformed
-        // TODO add your handling code here:
+     ThemSanPham t = new ThemSanPham();
+     t.setVisible(true);
     }//GEN-LAST:event_btn_themSPActionPerformed
+
+    private void btn_luuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_luuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_luuActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
