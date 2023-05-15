@@ -19,26 +19,30 @@ public class KhachHangDAO {
     
     
     
-    public static KhachHang timKiemKhachHang(String txt)
+    public static ArrayList<KhachHang> timKiemKhachHang(String txt)
     {
+        ArrayList<KhachHang> dskh = new ArrayList<KhachHang>();
         DataProvider dataProvider = new DataProvider();
         dataProvider.ketNoi();
-        String querry = "SELECT * FROM KhachHang WHERE SDT LIKE '"+txt+"%'";
+        String querry = "select *  from KhachHang where SDT Like '%"+txt+"%'";
         ResultSet rs =  dataProvider.executeQuery(querry);
-        KhachHang kh = new KhachHang();
         try {
             while(rs.next())
             {
-                kh.setMaKh(rs.getInt("Makh"));
-                kh.setTenKh(rs.getString("TenKh"));
+                KhachHang kh =new KhachHang();
+                kh.setMaKh(rs.getInt("MaKH"));
+                kh.setTenKh(rs.getString("TenKH"));
                 kh.setPhai(rs.getString("Phai"));
-                kh.setSdt(rs.getString("DiaChi"));
+                kh.setSdt(rs.getString("SDT"));
+                kh.setDiaChi(rs.getString("DiaChi"));
+                dskh.add(kh);
                 
             }
+            dataProvider.closeConnection();
         } catch (SQLException ex) {
             Logger.getLogger(KhachHangDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return kh;
+        return dskh;
     }
     
     public static boolean thẹmKhachHang(KhachHang kh)
@@ -107,5 +111,24 @@ public class KhachHangDAO {
             Logger.getLogger(KhachHangDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return kh;
+    }
+    
+    public static boolean CapNhatKhachHang(int maKh, Pojo.KhachHang kh )
+    {
+        
+        DataProvider dataProvider = new DataProvider();
+        dataProvider.ketNoi();
+        String query = "Update KhachHang Set tenKh = '"+kh.getTenKh()+"', phai ='"+kh.getPhai()+"', SDT ='"+kh.getSdt()+"' , diaChi = '"+kh.getDiaChi()+"' where makh = "+maKh+"";
+        int i = dataProvider.executeUpdate(query);
+        
+        if(i >=0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    
     }
 }

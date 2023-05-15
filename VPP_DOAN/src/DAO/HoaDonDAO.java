@@ -212,4 +212,24 @@ public class HoaDonDAO {
         return 0.0;
     }
     
+    
+    public static Double tinhTongTienNam(String txt)
+    {
+        DataProvider dataProvider = new DataProvider();
+        dataProvider.ketNoi();
+        String query = "SELECT SUM(ThanhTien) AS TongTienThang FROM HoaDon WHERE Year(NgayBan) = '"+txt+"'";
+        ResultSet rs = dataProvider.executeQuery(query);
+        Double tongTien =0.0;
+        try {
+            while(rs.next())
+            {
+                tongTien = rs.getDouble("TongTienThang");
+            }
+            return tongTien;
+        } catch (SQLException ex) {
+            Logger.getLogger(HoaDonDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0.0;
+    }
+    
 }

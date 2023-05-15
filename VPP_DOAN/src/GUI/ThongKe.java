@@ -30,6 +30,8 @@ public class ThongKe extends javax.swing.JPanel {
     SimpleDateFormat day = new SimpleDateFormat("dd");
 
     SimpleDateFormat month = new SimpleDateFormat("MM");
+    SimpleDateFormat year = new SimpleDateFormat("YYYY");
+
     
     DefaultTableModel defaultTableHD = new DefaultTableModel();
     DefaultTableModel defaultTableCTHD = new DefaultTableModel();
@@ -50,6 +52,7 @@ public class ThongKe extends javax.swing.JPanel {
         
         hienThiDoanhThu(txtViewTongTienNgay,HoaDonDAO.tinhTongTienNgay(day.format(datee)));
         hienThiDoanhThu(txtViewDoanhThuThang, HoaDonDAO.tinhTongTienThang(month.format(datee)));
+        hienThiDoanhThu(txtViewTongTienNam, HoaDonDAO.tinhTongTienNam(year.format(datee)));
         hienThiHoaDon();
     }
 
@@ -98,7 +101,7 @@ public class ThongKe extends javax.swing.JPanel {
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
+        txtViewTongTienNam = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
@@ -396,9 +399,9 @@ public class ThongKe extends javax.swing.JPanel {
         jLabel26.setForeground(new java.awt.Color(255, 255, 255));
         jLabel26.setText("Thành Công :");
 
-        jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel27.setText("0");
+        txtViewTongTienNam.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        txtViewTongTienNam.setForeground(new java.awt.Color(255, 255, 255));
+        txtViewTongTienNam.setText("0");
 
         jLabel28.setForeground(new java.awt.Color(255, 255, 255));
         jLabel28.setText("0");
@@ -416,7 +419,7 @@ public class ThongKe extends javax.swing.JPanel {
                 .addGap(14, 14, 14)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel27)
+                        .addComponent(txtViewTongTienNam)
                         .addGap(39, 39, 39)
                         .addComponent(jLabel23))
                     .addComponent(jLabel24)
@@ -429,7 +432,7 @@ public class ThongKe extends javax.swing.JPanel {
                             .addComponent(jLabel29)
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addComponent(jLabel28)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                                 .addComponent(jLabel32)))))
                 .addGap(25, 25, 25))
         );
@@ -442,7 +445,7 @@ public class ThongKe extends javax.swing.JPanel {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel27)
+                            .addComponent(txtViewTongTienNam)
                             .addComponent(jLabel23))
                         .addGap(32, 32, 32)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -763,7 +766,6 @@ public class ThongKe extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
@@ -798,6 +800,7 @@ public class ThongKe extends javax.swing.JPanel {
     private javax.swing.JTable table_HD;
     private javax.swing.JLabel txtViewDoanhThuThang;
     private javax.swing.JLabel txtViewTongDonHang;
+    private javax.swing.JLabel txtViewTongTienNam;
     private javax.swing.JLabel txtViewTongTienNgay;
     // End of variables declaration//GEN-END:variables
 
