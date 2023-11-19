@@ -20,8 +20,8 @@ public class DataProvider {
     ResultSet resultSet;
     public void ketNoi()
     {
-        String strName = "DESKTOP-CEQ6SSS";
-        String strDataBase = "QLVPP__";
+        String strName = "DESKTOP-BJQTLVC\\SQLEXPRESS";
+        String strDataBase = "DA_VPP";
         String strUser = "sa";
         String strPass ="123";
         try {

@@ -6,13 +6,63 @@ package Pojo;
 
 /**
  *
- * @author Nguyen Bach Long
+ * @author AnNguyen
  */
 public class SanPham {
-    String tenSp, mau;
-    int soLuong, maSP, maLoai,maNCC ;
-    int donGia;
-    private String TenLoai;
+        private int MaSP;
+	private String TenLoai;
+        private int MaLoai;
+	private String TenSP;
+	private String Mau ;
+	private int DonGia ;
+	private String TenNCC ;
+        private String Hinh ;
+        private String TrangThai ;
+        private int SoLuong;
+
+    public SanPham(int MaSP, String TenLoai, int MaLoai, String TenSP, String Mau, int DonGia, String TenNCC, String Hinh, String TrangThai, int SoLuong) {
+        this.MaSP = MaSP;
+        this.TenLoai = TenLoai;
+        this.MaLoai = MaLoai;
+        this.TenSP = TenSP;
+        this.Mau = Mau;
+        this.DonGia = DonGia;
+        this.TenNCC = TenNCC;
+        this.Hinh = Hinh;
+        this.TrangThai = TrangThai;
+        this.SoLuong = SoLuong;
+    }
+
+    public int getSoLuong() {
+        return SoLuong;
+    }
+
+    public void setSoLuong(int SoLuong) {
+        this.SoLuong = SoLuong;
+    }
+
+    
+
+    public int getMaLoai() {
+        return MaLoai;
+    }
+
+    public void setMaLoai(int MaLoai) {
+        this.MaLoai = MaLoai;
+    }
+
+
+
+    public SanPham() {
+    }
+
+    public int getMaSP() {
+        return MaSP;
+    }
+
+    public void setMaSP(int MaSP) {
+        this.MaSP = MaSP;
+    }
 
     public String getTenLoai() {
         return TenLoai;
@@ -22,76 +72,51 @@ public class SanPham {
         this.TenLoai = TenLoai;
     }
 
-    public SanPham(String tenSp, String mau, int soLuong, int maSP, int maLoai, int maNCC, int donGia, String tenLoai) {
-        this.tenSp = tenSp;
-        this.mau = mau;
-        this.soLuong = soLuong;
-        this.maSP = maSP;
-        this.maLoai = maLoai;
-        this.maNCC = maNCC;
-        this.donGia = donGia;
-        this.TenLoai = tenLoai;
+    public String getTenSP() {
+        return TenSP;
     }
 
-    public SanPham() {
-    }
-
-    public String getTenSp() {
-        return tenSp;
-    }
-
-    public void setTenSp(String tenSp) {
-        this.tenSp = tenSp;
+    public void setTenSP(String TenSP) {
+        this.TenSP = TenSP;
     }
 
     public String getMau() {
-        return mau;
+        return Mau;
     }
 
-    public void setMau(String mau) {
-        this.mau = mau;
+    public void setMau(String Mau) {
+        this.Mau = Mau;
     }
 
-    public int getSoLuong() {
-        return soLuong;
+    public int getDonGia() {
+        return DonGia;
     }
 
-    public void setSoLuong(int soLuong) {
-        this.soLuong = soLuong;
+    public void setDonGia(int DonGia) {
+        this.DonGia = DonGia;
     }
 
-    public int getMaSP() {
-        return maSP;
+    public String getTenNCC() {
+        return TenNCC;
     }
 
-    public void setMaSP(int maSP) {
-        this.maSP = maSP;
+    public void setTenNCC(String TenNCC) {
+        this.TenNCC = TenNCC;
     }
 
-    public int getMaLoai() {
-        return maLoai;
+    public String getHinh() {
+        return Hinh;
     }
 
-    public void setMaLoai(int maLoai) {
-        this.maLoai = maLoai;
+    public void setHinh(String Hinh) {
+        this.Hinh = Hinh;
     }
 
-    public int getMaNCC() {
-        return maNCC;
+    public String getTrangThai() {
+        return TrangThai;
     }
 
-    public void setMaNCC(int maNCC) {
-        this.maNCC = maNCC;
+    public void setTrangThai(String TrangThai) {
+        this.TrangThai = TrangThai;
     }
-
-    public float getDonGia() {
-        return donGia;
-    }
-
-    public void setDonGia(int donGia) {
-        this.donGia = donGia;
-    }
-    
-    
-    
 }

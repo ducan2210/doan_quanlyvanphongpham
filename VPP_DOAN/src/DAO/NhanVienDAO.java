@@ -20,6 +20,74 @@ public class NhanVienDAO {
     public NhanVienDAO() {
     }
     
+    public static boolean  ktrDangNhap(String taiKhoan, String matKhau)
+    {
+        String sql = "select * from NhanVien where TaiKhoan = '"+taiKhoan+"' AND matKhau = '"+matKhau+"'";
+        DataProvider provider = new DataProvider();
+        provider.ketNoi();
+        ResultSet rs=  provider.executeQuery(sql);
+        try {
+            while(rs.next())
+            {
+                return true;
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(NhanVienDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
+    
+    public static int DemSoHDnVTao(int maNV)
+    {
+        DataProvider provider = new DataProvider();
+        provider.ketNoi();
+       
+        
+        String query = "SELECT COUNT(*) AS invoice_count FROM NHANVIEN, HOADON WHERE NHANVIEN.MaNV = HOADON.MaNV AND  NHANVIEN.MaNV = "+maNV+"";
+        ResultSet rs =  provider.executeQuery(query);
+        try {
+            while(rs.next())
+            {
+                return rs.getInt("invoice_count");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(NhanVienDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+             
+    }
+    
+     public static Pojo.NhanVien layTTDangNhap(String taiKhoan, String matKhau)
+    {
+        NhanVien nv = new NhanVien();
+        String sql = "select * from NhanVien where TaiKhoan = '"+taiKhoan+"' AND matKhau = '"+matKhau+"'";
+        DataProvider provider = new DataProvider();
+        provider.ketNoi();
+        ResultSet resultSet=  provider.executeQuery(sql);
+        try {
+            while(resultSet.next())
+            {
+              nv.setMaNV(resultSet.getInt("MaNV"));
+              nv.setHoTen(resultSet.getString("Hoten"));
+              nv.setTaiKhoan(resultSet.getString("TaiKhoan"));
+              nv.setMatKhau(resultSet.getString("MatKhau"));
+              nv.setSoDT(resultSet.getString("SDT"));
+              nv.setDiaChi(resultSet.getString("DiaChi"));
+              nv.setHinh(resultSet.getString("Hinh"));
+              nv.setTrangThai(resultSet.getString("TrangTrai"));
+              nv.setQuyen(resultSet.getString("Quyen"));
+          
+            }
+            return nv;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(NhanVienDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return nv;
+    }
+    
     public static ArrayList<NhanVien> layDanhSachNhanVien()
     {
       ArrayList<NhanVien> dsnv = new ArrayList();
@@ -78,9 +146,9 @@ public class NhanVienDAO {
     return kq;
   }
   
-  public static boolean UpdateNhanVien(NhanVien a) {
+  public static boolean UpdateNhanVien(Pojo.NhanVien a) {
     boolean kq = false;
-    String sql = String.format("update NhanVien set Hoten=N'%s', TaiKhoan='%s', SDT='%s', DiaChi=N'%s', Hinh='%s', TrangTrai=N'%s', Quyen=N'%s' where MaNV=%d", new Object[] { a.hoTen, a.taiKhoan, a.soDT, a.diaChi, a.hinh, a.trangThai, a.quyen, a.maNV });
+    String sql = String.format("update NhanVien set Hoten=N'"+a.getHoTen()+"', TaiKhoan='"+a.getTaiKhoan()+"', SDT='"+a.getTaiKhoan()+"', DiaChi=N'"+a.getDiaChi()+"', TrangTrai=N'"+a.getTrangThai()+"', Quyen=N'"+a.getQuyen()+"' where MaNV="+a.getMaNV()+"");
     DataProvider provider = new DataProvider();
     provider.ketNoi();
     int n = provider.executeUpdate(sql);
@@ -259,11 +327,11 @@ public class NhanVienDAO {
   }
   
   
-  public static ArrayList<NhanVien> layDanhSachNhanVien(String taikhoan)
+  public static ArrayList<NhanVien> layDanhSachNhanVien(int idNV)
     {
       ArrayList<NhanVien> dsnv = new ArrayList();
       try {
-        String sql = "select * from NhanVien where taikhoan = '"+taikhoan+"'";
+        String sql = "select * from NhanVien where MaNV = '"+idNV+"'";
         DataProvider provider = new DataProvider();
         provider.ketNoi();
         ResultSet resultSet = provider.executeQuery(sql);
@@ -300,6 +368,29 @@ public class NhanVienDAO {
         provider.closeConnection();
         return kq;
     }
+    
+    public static NhanVien LayNhanVienTheoMa(int ma)
+    {
+        NhanVien nv = new NhanVien();
+        DataProvider provider = new DataProvider();
+        provider.ketNoi();
+        String query = "Select * from NhanVien where MaNV = "+ma+"";
+        ResultSet rs =  provider.executeQuery(query);
+        try {
+            while(rs.next())
+            {
+                nv.setHoTen(rs.getString("Hoten"));
+                nv.setQuyen(rs.getString("Quyen"));
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(NhanVienDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return nv;
+        
+    }
+    
+    
     
     
 }

@@ -1,5 +1,6 @@
 package DAO;
 
+
 import Pojo.NhaCungCap;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,9 +21,9 @@ public class NhaCungCapDAO {
             ArrayList<NhaCungCap> dsncc = new ArrayList<>();
             try{
             String sql = "select * from NCC where TrangThai = N'Hiện'";
-            DataProvider provider = new DataProvider();
-            provider.ketNoi();
-            ResultSet resultSet = provider.executeQuery(sql);
+            DataProvider dataProvider = new DataProvider();
+        dataProvider.ketNoi();
+            ResultSet resultSet = dataProvider.executeQuery(sql);
             while(resultSet.next())
             {
                 NhaCungCap ncc = new NhaCungCap();
@@ -42,9 +43,9 @@ public class NhaCungCapDAO {
             ArrayList<NhaCungCap> dsncc = new ArrayList<>();
             try{
             String sql = "select * from NCC where TrangThai = N'Ẩn'";
-            DataProvider provider = new DataProvider();
-            provider.ketNoi();
-            ResultSet resultSet = provider.executeQuery(sql);
+           DataProvider dataProvider = new DataProvider();
+        dataProvider.ketNoi();
+            ResultSet resultSet = dataProvider.executeQuery(sql);
             while(resultSet.next())
             {
                 NhaCungCap ncc = new NhaCungCap();
@@ -70,14 +71,14 @@ public class NhaCungCapDAO {
             return false;
         }
         String sql = String.format("update NCC set TrangThai = N'Ẩn' WHERE MaNCC = %d", maNCC);
-        DataProvider provider = new DataProvider();
-        provider.ketNoi();
-        int n = provider.executeUpdate(sql);
+        DataProvider dataProvider = new DataProvider();
+        dataProvider.ketNoi();
+        int n = dataProvider.executeUpdate(sql);
         if(n>=0)
         {
             kq = true;
         }
-        provider.closeConnection();
+       dataProvider.closeConnection();
         return kq;
     }
     
@@ -92,14 +93,14 @@ public class NhaCungCapDAO {
             return false;
         }
         String sql = String.format("update NCC set TrangThai = N'Hiện' WHERE MaNCC = %d", maNCC);
-        DataProvider provider = new DataProvider();
-        provider.ketNoi();
-        int n = provider.executeUpdate(sql);
+        DataProvider dataProvider = new DataProvider();
+        dataProvider.ketNoi();
+        int n = dataProvider.executeUpdate(sql);
         if(n>=0)
         {
             kq = true;
         }
-        provider.closeConnection();
+       dataProvider.closeConnection();
         return kq;
     }
 
@@ -107,27 +108,27 @@ public class NhaCungCapDAO {
     {
         boolean kq = false;
         String sql = String.format("INSERT INTO NCC([TenNCC],[DiaChi],[SDT]) VALUES (N'%s',N'%s','%s')", ten,diaChi,sdt);
-        DataProvider provider = new DataProvider();
-        provider.ketNoi();
-        int n=provider.executeUpdate(sql);
+        DataProvider dataProvider = new DataProvider();
+        dataProvider.ketNoi();
+        int n=dataProvider.executeUpdate(sql);
         if(n>0)
         {
             kq = true;
         }
-        provider.closeConnection();
+       dataProvider.closeConnection();
         return kq;
     }
 
    public static boolean UpdateNhaCungCap(String ten, String diaChi, String sdt) {
         boolean kq = false;
         String sql = String.format("update NCC set DiaChi=N'%s', SDT='%s' where TenNCC=N'%s'",  diaChi, sdt, ten);
-        DataProvider provider = new DataProvider();
-        provider.ketNoi();
-        int n = provider.executeUpdate(sql);
+        DataProvider dataProvider = new DataProvider();
+        dataProvider.ketNoi();
+        int n = dataProvider.executeUpdate(sql);
         if (n > 0) {
             kq = true;
         }
-        provider.closeConnection();
+        dataProvider.closeConnection();
         return kq;
     }
 
@@ -135,9 +136,9 @@ public class NhaCungCapDAO {
      {
         try{
             String sql = String.format("select * from NCC where TenNCC = N'%s'", ten);
-            DataProvider provider = new DataProvider();
-            provider.ketNoi();
-            ResultSet resultSet = provider.executeQuery(sql);
+            DataProvider dataProvider = new DataProvider();
+        dataProvider.ketNoi();
+            ResultSet resultSet = dataProvider.executeQuery(sql);
             if(resultSet.next())
             {
                return true;
@@ -147,6 +148,41 @@ public class NhaCungCapDAO {
             }
         return false;
      }
+         
+     public static NhaCungCap TimNCCSPTheoMa(String ma)
+        {
+            NhaCungCap ncc = new NhaCungCap();
+            try{
+            String sql = String.format("select TenNCC from SANPHAM, NCC where SANPHAM.MaNCC = NCC.MaNCC and MaSP='%s'", ma);
+            DataProvider dataProvider = new DataProvider();
+        dataProvider.ketNoi();
+            ResultSet resultSet = dataProvider.executeQuery(sql);
+            while(resultSet.next())
+            {
+                ncc.setTenNCC(resultSet.getString("TenNCC"));
+            }  
+            }catch(SQLException e){
+               e.getMessage();
+            }
+            return ncc;
+        }
      
+      public static NhaCungCap TimMaNCCTheoTenNCC(String ten)
+        {
+            NhaCungCap ncc = new NhaCungCap();
+            try{
+            String sql = String.format("select MaNCC from NCC where TenNCC=N'%s'", ten);
+            DataProvider dataProvider = new DataProvider();
+        dataProvider.ketNoi();
+            ResultSet resultSet = dataProvider.executeQuery(sql);
+            while(resultSet.next())
+            {
+                ncc.setMaNCC(resultSet.getInt("MaNCC"));
+            }  
+            }catch(SQLException e){
+               e.getMessage();
+            }
+            return ncc;
+        }
      
 }

@@ -47,7 +47,7 @@ public class BanHang extends javax.swing.JPanel {
         table_DsSanPham.setModel(defaultTableModel);
         table_GioHang.setModel(defaultTableGioHang);
         table_HdCho.setModel(defaultTableHDCho);
-        ArrayList<SanPham> dspb = SanPhamDAO.dsSP();
+        ArrayList<SanPham> dspb = SanPhamDAO.layDanhSachSanPham();
         hienThiSanPham(dspb);
    
         btnEnabled(false);
@@ -69,8 +69,6 @@ public class BanHang extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         table_GioHang = new javax.swing.JTable();
-        xoaSPGio = new javax.swing.JButton();
-        xoaALLSPGio = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -154,48 +152,21 @@ public class BanHang extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(table_GioHang);
 
-        xoaSPGio.setBackground(new java.awt.Color(0, 153, 204));
-        xoaSPGio.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        xoaSPGio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-close-30.png"))); // NOI18N
-        xoaSPGio.setText("Xóa sản phẩm");
-        xoaSPGio.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        xoaSPGio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                xoaSPGioActionPerformed(evt);
-            }
-        });
-
-        xoaALLSPGio.setBackground(new java.awt.Color(0, 153, 204));
-        xoaALLSPGio.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        xoaALLSPGio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-close-30.png"))); // NOI18N
-        xoaALLSPGio.setText("Xóa tất cả sản phẩm");
-        xoaALLSPGio.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(xoaSPGio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(xoaALLSPGio, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane2)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(xoaSPGio)
-                .addGap(38, 38, 38)
-                .addComponent(xoaALLSPGio)
-                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -573,7 +544,13 @@ public class BanHang extends javax.swing.JPanel {
                 HoaDonDAO.capNhapTrangThai(hd.getMaHD(), "Đã Thanh Toán", Double.parseDouble(txtViewThanhTien.getText()));
             }
             JOptionPane.showMessageDialog(this, "Thanh Toán Thành Công !!!");
-            initComponents();
+            defaultTableGioHang.setRowCount(0);
+            defaultTableHDCho.setRowCount(0);
+            txtViewMKH.setText("");
+            txtViewThanhTien.setText("");
+            txtViewMKH.setText("");
+            txtViewTKH.setText("");
+            txtMHD.setText("");
             
         } catch (Exception e) {
              JOptionPane.showMessageDialog(this, "Thanh Toán Thất Bại !!!");
@@ -590,7 +567,7 @@ public class BanHang extends javax.swing.JPanel {
         // lay tao khoan nhan vien dang nhap
         //hd.setMaNV();
         hd.setNgayThang(dateFormat.format(date));
-        hd.setMaNV(2);
+        hd.setMaNV(DangNhap.idTaiKhoang);
         hd.setTrangThai("chưa thanh toán");
         HD.Them1HD(hd);
 
@@ -618,17 +595,10 @@ public class BanHang extends javax.swing.JPanel {
     }//GEN-LAST:event_btnThemSanPhamActionPerformed
 
     private void txtTimKiemSPKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemSPKeyReleased
-        ArrayList<SanPham> dsSP  =  SanPhamDAO.timKiemSanPham(txtTimKiemSP.getText());
+        ArrayList<Pojo.SanPham> dsSP  =  SanPhamDAO.timKiemSanPham(txtTimKiemSP.getText());
         hienThiSanPham(dsSP);
         
     }//GEN-LAST:event_txtTimKiemSPKeyReleased
-
-    private void xoaSPGioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xoaSPGioActionPerformed
-          int row = table_GioHang.getSelectedRow();
-          defaultTableHDCho.removeRow(row);
-          defaultTableHDCho.fireTableRowsDeleted(row, row);
-          
-    }//GEN-LAST:event_xoaSPGioActionPerformed
 
     private void txtTimKiemSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimKiemSPActionPerformed
         // TODO add your handling code here:
@@ -673,22 +643,25 @@ public class BanHang extends javax.swing.JPanel {
     private javax.swing.JLabel txtViewTKH;
     private javax.swing.JLabel txtViewThanhTien;
     private javax.swing.JLabel txtViewTongTien;
-    private javax.swing.JButton xoaALLSPGio;
-    private javax.swing.JButton xoaSPGio;
     // End of variables declaration//GEN-END:variables
 
-    private void hienThiSanPham( ArrayList<SanPham> dspb) {
+    private void hienThiSanPham( ArrayList<Pojo.SanPham> dspb) {
         
         defaultTableModel.setRowCount(0);
-        for( SanPham sp : dspb)
+        for( Pojo.SanPham sp : dspb)
         {
-            Vector<Object> rowData = new Vector<Object>();
-            rowData.add(sp.getMaSP());
-            rowData.add(sp.getTenSp());
-            rowData.add(sp.getMau());
-            rowData.add(sp.getSoLuong());
-            rowData.add(sp.getDonGia());
-            defaultTableModel.addRow(rowData);
+            if(sp.getTrangThai().equals("Đang kinh doanh"))
+            {
+                 Vector<Object> rowData = new Vector<Object>();
+                rowData.add(sp.getMaSP());
+                
+                rowData.add(sp.getTenSP());
+                rowData.add(sp.getMau());
+                rowData.add(sp.getSoLuong());
+                rowData.add(sp.getDonGia());
+                defaultTableModel.addRow(rowData);
+            }
+           
            
         }
         table_DsSanPham.setModel(defaultTableModel);
@@ -723,7 +696,7 @@ public class BanHang extends javax.swing.JPanel {
        
        cnHd.setMaHD(hdVuaTao.getMaHD());
        cnHd.setMaKH(kh.getMaKh());
-       cnHd.setMaNV(2);
+       cnHd.setMaNV(DangNhap.idTaiKhoang);
        cnHd.setNgayThang(dateFormat.format(date));
        cnHd.setThanhTien(0);
        cnHd.setTrangThai("Chưa thanh toán");
@@ -755,9 +728,16 @@ public class BanHang extends javax.swing.JPanel {
     private void themSanphamVaoGio(){
         String soLuong =   JOptionPane.showInputDialog(null, "Nhập số lượng sản phẩm:", "Hệ Thống Bán Hàng", JOptionPane.QUESTION_MESSAGE);
         
+        
         int row = table_DsSanPham.getSelectedRow();
+       
         int currentValue = Integer.parseInt(table_DsSanPham.getValueAt(row, 3).toString()) ;
         
+        if((currentValue - Integer.parseInt(soLuong)) < 0)
+        {
+            JOptionPane.showMessageDialog(this, "Không đủ số lượng!!");
+            return;
+        }
         // cap nhat lai so luong tren table
         int slCN = currentValue - Integer.parseInt(soLuong);
         
@@ -771,13 +751,6 @@ public class BanHang extends javax.swing.JPanel {
         rowData.add(soLuong);
         rowData.add(table_DsSanPham.getValueAt(row, 4));
         defaultTableGioHang.addRow(rowData);
-        table_GioHang.setModel(defaultTableGioHang);
-
-        
+        table_GioHang.setModel(defaultTableGioHang);        
 }
-    
-    
-   
-  
-
 }

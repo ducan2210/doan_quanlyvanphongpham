@@ -28,7 +28,7 @@ public class DSKhachHang extends javax.swing.JFrame {
     
     public DSKhachHang() {
         initComponents();
-        String TieuDe[] = {"Mã Khách Hàng", "Tên Khách Hàng", "Giớ Tính", "Địa Chỉ", "Số Điện Thoại"};
+        String TieuDe[] = {"Mã Khách Hàng", "Tên Khách Hàng", "Giới Tính", "Địa Chỉ", "Số Điện Thoại"};
         defaultTableModel.setColumnIdentifiers(TieuDe);
         table_KhachHang.setModel(defaultTableModel);
         hienThiKhachHang();

@@ -6,9 +6,12 @@ package controll;
 
 import GUI.BanHang;
 import GUI.KhachHang;
+import GUI.NhaCungCap;
 import GUI.ThongKe;
 import GUI.NhanVien;
-import GUI.SanPham;
+import GUI.NhapHang;
+import GUI.QLSANPHAM;
+
 import bean.DanhMuc;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -74,13 +77,13 @@ public class chuyenManHinh {
             switch(kind)
             {
                 case "BanHang":
-                    node = new BanHang();
+                    node = new GUI.BanHang();
                     break;
                 case "ThongKe":
                     node = new ThongKe();
                     break;
                 case "SanPham":
-                    node = new SanPham();
+                    node = new QLSANPHAM();
                     break;
                 case "NhanVien":
                     node = new NhanVien();
@@ -88,6 +91,12 @@ public class chuyenManHinh {
                 case "KhachHang":
                     node = new GUI.KhachHang();
                     break;
+                case "NhaCungCap":
+                    node =  new NhaCungCap();
+                    break;
+                case "NhapHang":
+                    node =  new NhapHang();
+                    break;     
                  default:
                     node = new BanHang();
                     break;
